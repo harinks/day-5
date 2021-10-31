@@ -1,0 +1,255 @@
+1. Do the below programs in anonymous function & IIFE
+
+a. Print odd numbers in an array
+
+Anonymous function:
+
+var odd = function(arr){
+    var res = [];
+    for(i=0;i<arr.length;i++){
+        if(arr[i]%2!==0){
+            res.push(arr[i])
+        }
+    }
+return res.join(",")
+}
+console.log(odd([1,2,3,4,5]))
+
+
+IIFE function:
+
+(function(arr){
+    var res = [];
+    for(i=0;i<arr.length;i++){
+        if(arr[i]%2!==0){
+            res.push(arr[i])
+        }
+    }
+    console.log(res.join(","))
+})
+([1,2,3,4,5])
+
+
+Output for both functions:
+1,3,5
+
+
+b. Convert all the strings to title caps in a string array
+
+
+Anonymous function:
+
+var titleCase = function(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  return str.join(' ');
+}
+console.log(titleCase("guvi geeks"));
+
+
+IIFE function:
+
+(function(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+  }
+  console.log(str.join(' '));
+})
+("guvi geeks");
+
+
+Output for both functions:
+Guvi Geeks
+
+
+c. Sum of all numbers in an array
+
+
+Anonymous function:
+
+var sum =function(arr){
+    var  res=0;
+    for(i=0;i<arr.length;i++)
+    {
+            res+=arr[i];
+    }
+    return res;
+ 
+}
+console.log(sum([1,2,3,4,5]))
+
+
+IIFE function:
+
+(function(arr){
+    var  res=0;
+    for(i=0;i<arr.length;i++)
+    {
+            res+=arr[i];
+    }
+    console.log(res);
+})
+([1,2,3,4,5])
+
+
+Output for both functions:
+15
+
+
+d. Return all the prime numbers in an array 
+
+Anonymous Function:
+
+var sum =function(arr){
+    var  res=[];
+    for(i=0;i<arr.length;i++)
+    {
+        var count=0;
+        for(j=1;j<=arr[i];j++)
+        {
+            if(arr[i]%j===0)
+            {
+                count++
+            }
+        }
+        if(count==2)
+        {
+            res.push(arr[i])
+        }
+    }
+    return (res.join(","));
+ 
+}
+console.log(sum([1,2,3,4,5,6,7,8,9,10]))
+
+
+IIFE function:
+
+(function(arr){
+    var  res=[];
+    for(i=0;i<arr.length;i++)
+    {
+        var count=0;
+        for(j=1;j<=arr[i];j++)
+        {
+            if(arr[i]%j===0)
+            {
+                count++
+            }
+        }
+        if(count==2)
+        {
+            res.push(arr[i])
+        }
+    }
+    console.log(res.join(","));
+ 
+})
+([1,2,3,4,5,6,7,8,9,10])
+
+
+Output for both functions:
+2,3,5,7
+
+
+e.Return all the palindromes in an array
+
+
+Anonymous function:
+
+var isPalindrome=function(word) {
+        var first = word.slice(0, Math.ceil(word.length/2));
+        var reversed = word.slice(Math.floor(word.length/2)).split('').reverse().join('');
+
+        return first === reversed;
+    }
+function getPalindromesFromArray(arr) {
+     return arr.filter(isPalindrome).join(",");
+    }
+
+console.log(getPalindromesFromArray(['foo', 'racecar', 'pineapple', '123321', 'pineenip']));
+
+
+IIFE function:
+
+function isPalindrome(word) {
+        var first = word.slice(0, Math.ceil(word.length/2));
+        var reversed = word.slice(Math.floor(word.length/2)).split('').reverse().join('');
+
+        return first === reversed;
+    }
+
+(function (arr) {
+        console.log(arr.filter(isPalindrome).join(","));
+    })
+
+(['foo', 'racecar', 'pineapple', '123321', 'pineenip']);
+
+
+Output for both function:
+racecar,123321,pineenip
+
+
+f.Return median of two sorted arrays of same size
+
+
+Anonymous function:
+
+var median=function(arr1,arr2){
+    var merge = arr1.concat(arr2)
+    var sort = merge.sort((a,b)=>a-b)
+    var mean = sort.slice(sort.length/2-1,sort.length/2+1)
+    return mean.reduce((a,b)=>(a+b)/2)
+};
+console.log(median([1,2,5,3],[4,8,6,10,11]))
+
+
+IIFE function:
+
+(function(arr1,arr2){
+    var merge = arr1.concat(arr2)
+    var sort = merge.sort((a,b)=>a-b)
+    var mean = sort.slice(sort.length/2-1,sort.length/2+1)
+    console.log(mean.reduce((a,b)=>(a+b)/2))
+})
+([1,2,5,3],[4,8,6,10,11])
+
+
+Output of both function:
+4.5
+
+
+h.Rotate an array by k times
+
+Anonymous function:
+
+var rotateArray = function(arr, k) {
+
+  for (let i = 0; i < k; i++) {
+      arr.unshift(arr.pop());
+  }
+
+  return arr.join(",");
+}
+var array = [1,2,3,4,5]
+console.log(rotateArray(array,3))
+
+
+IIFE function:
+
+(function(arr, k) {
+
+  for (let i = 0; i < k; i++) {
+      arr.unshift(arr.pop());
+  }
+
+  console.log(arr.join(","));
+})
+([1,2,3,4,5],3)
+
+
+Output for both function:
+3,4,5,1,2
